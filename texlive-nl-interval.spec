@@ -1,6 +1,6 @@
 Name:		texlive-nl-interval
 Version:	58328
-Release:	1
+Release:	2
 Summary:	Represent intervals on the number line
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/nl-interval
