@@ -1,37 +1,21 @@
-Name:		texlive-nl-interval
-Version:	58328
-Release:	2
+%global tl_name nl-interval
+%global tl_revision 58328
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0
+Release:	%{tl_revision}.1
 Summary:	Represent intervals on the number line
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/nl-interval
+URL:		https://www.ctan.org/tex-archive/graphics/pgf/contrib/nl-interval
 License:	lppl1.3c
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/nl-interval.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/nl-interval.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/nl-interval.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/nl-interval.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package provides macros to simplify the process of
-representing intervals on the number line. It depends on
-tkz-fct, ifthen, and xparse.
+This package provides macros to simplify the process of representing
+intervals on the number line. It depends on tkz-fct, ifthen, and xparse.
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/latex/nl-interval
-%doc %{_texmfdistdir}/doc/latex/nl-interval
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
